@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Control.Docentes"
+             xmlns:Material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             Title="Docentes">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Dados do docente" Margin="10,10" 
+                                   FontSize="Medium" 
+                                   TextColor="#2189df"/>
+                                <Material:MaterialTextField 
+                                    x:Name="txtNome"
+                                    Placeholder="Nome"
+                                    VerticalOptions="Center"
+                                    InputType="Text"
+                                    TextColor="#4A6963"
+                                    LeadingIcon="NomeUsuario"
+                                    PlaceholderColor="#4A6963"
+                                    ErrorColor="Red"
+                                    LeadingIconTintColor="#4A6963"
+                                    TintColor="#1976D3"
+                                    BackgroundColor="WhiteSmoke" 
+                                    Padding="10"
+                                    MaxLength="30"/>
+                                <Material:MaterialTextField 
+                                     x:Name="txtPhone"
+                                     VerticalOptions="Center"
+                                     Placeholder="Telefone"
+                                     InputType="Numeric"
+                                     TextColor="#4A6963"
+                                     PlaceholderColor="#4A6963"
+                                     LeadingIcon="PhoneUser"
+                                     ErrorColor="red"
+                                     LeadingIconTintColor="#4A6963"
+                                     TintColor="#1976D3"
+                                     BackgroundColor="WhiteSmoke" 
+                                     Padding="10"
+                                     MaxLength="9"/>
+                                <Material:MaterialTextField 
+                                    x:Name="txtEmail"
+                                    Placeholder="Email"
+                                    VerticalOptions="Center"
+                                    InputType="Email"
+                                    TextColor="#4A6963"
+                                    PlaceholderColor="#4A6963"
+                                    LeadingIcon="LoginUser"
+                                    ErrorColor="Red"
+                                    LeadingIconTintColor="#4A6963"
+                                    TintColor="#1976D3"
+                                    BackgroundColor="WhiteSmoke" 
+                                    Padding="10" />
+                                <Material:MaterialTextField 
+                                    x:Name="txtSenha"
+                                    VerticalOptions="Center"
+                                    Placeholder="Senha"
+                                    InputType="Password"
+                                    TextColor="#4A6963"
+                                    PlaceholderColor="#4A6963"
+                                    LeadingIcon="PasswordUser"
+                                    ErrorColor="red"
+                                    LeadingIconTintColor="#4A6963"
+                                    TintColor="#1976D3"
+                                    BackgroundColor="WhiteSmoke" 
+                                    Padding="10"
+                                    MaxLength="20"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Padding="10,10">
+                                <Label Text="Dados da cadeira" Margin="10,10" 
+                                   FontSize="Medium" 
+                                   TextColor="#2189df"/>
+                                <CollectionView x:Name="viewcadeirasResumo" IsVisible="False" 
+                                                EmptyView="Nenhuma cadeira selecionada" 
+                                                SelectionMode="None"
+                                                HeightRequest="100">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding Name}" FontSize="Medium" 
+                                                       VerticalOptions="Start" Grid.Row="0" 
+                                                       Margin="0,5" TextColor="#2189dc"  
+                                                       Style="{DynamicResource CaptionStyle}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                                <Material:MaterialButton x:Name="AddCadeiras" Text="Adicionar cadeiras" BackgroundColor="#EBB507" Clicked="AddCadeiras_Clicked"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="10,10">
+                                <Material:MaterialButton x:Name="btSalvarEditar" Text="Salvar"                                              
+                                 BackgroundColor="#46D57B" Clicked="btSalvarEditar_Clicked" VerticalOptions="Fill"/>
+                                <Material:MaterialButton x:Name="btCancelarEditar" Text="Cancelar"
+                                 BackgroundColor="#D53343" Clicked="btCancelarEditar_Clicked" VerticalOptions="End" IsVisible="False"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Label Text="Docentes" Margin="10,10" FontSize="Medium" TextColor="#2189df" Style="{DynamicResource BodyStyle}"/>
+                        <Label Text="{Binding Total, StringFormat='Total {0}'}" Margin="10,0" FontSize="Small" TextColor="Green"/>
+                        <CollectionView x:Name="ViewDocentes" BackgroundColor="#f3f3f3" 
+                                ItemsSource="{Binding Docentes}"
+                            EmptyView="Nenhum docente registrado" 
+                            SelectionMode="Single" 
+                            SelectionChanged="ViewDocentes_SelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" Span="1"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                    Margin="10,5"
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    HasShadow="True">
+                                        <Grid Padding="0" ColumnSpacing="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Start" 
+                                                   Grid.Row="0" Margin="0,5" TextColor="#2189dc"  
+                                                   Style="{DynamicResource CaptionStyle}" />
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
