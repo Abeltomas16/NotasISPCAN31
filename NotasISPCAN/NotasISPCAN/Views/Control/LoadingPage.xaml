@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Shell.NavBarIsVisible="False"
+             x:Class="NotasISPCAN.Views.Control.LoadingPage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <ActivityIndicator x:Name="activy" IsRunning="True" IsVisible="True" HorizontalOptions="Center" Color="Orange"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+    

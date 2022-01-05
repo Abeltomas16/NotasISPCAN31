@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Control.LoginPage"
+             xmlns:Material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.PresentationMode="Animated"
+             Visual="Material"
+             Title="Iniciar sessão">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image Source="back" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" Margin="0,50,0,0" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="20,0,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="loginLogo.png" HeightRequest="70" VerticalOptions="EndAndExpand"/>
+                        <Material:MaterialTextField 
+                                x:Name="txtUser"
+                                Text="{Binding _email}"
+                                Placeholder="email"
+                                VerticalOptions="Center"
+                                InputType="Email"
+                                TextColor="White"
+                                ErrorColor="red"
+                                PlaceholderColor="White"
+                                LeadingIcon="usr"
+                                LeadingIconTintColor="Orange"
+                                TintColor="Gray"
+                                BackgroundColor="Transparent"  
+                                Grid.Row="1"/>
+                        <Material:MaterialTextField 
+                                x:Name="txtSenha"
+                                Placeholder="Senha"
+                                Text="{Binding _senha}"
+                                VerticalOptions="Center"
+                                InputType="Password"
+                                TextColor="White"
+                                PlaceholderColor="White"
+                                LeadingIcon="pass"
+                                ErrorColor="red"
+                                LeadingIconTintColor="Orange"
+                                TintColor="Gray"
+                                BackgroundColor="Transparent"
+                                Grid.Row="2"/>
+                        <Button Text="Entrar" BackgroundColor="#3897f0" 
+                                TextColor="White" HeightRequest="50" 
+                                VerticalOptions="Start" 
+                                Grid.Row="3" Command="{Binding ExecuteSignIn}" 
+                                Margin="0,10,0,0"/>
+                        <Label Text="Problemas no Login ? " HorizontalOptions="Center" 
+                                Grid.Row="4" Margin="0,10,0,0" FontSize="12"/>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label BackgroundColor="#bababa" HeightRequest="1" 
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <Image Source="gfacebook.png" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>
+                            <Label BackgroundColor="#bababa" Grid.Column="2" HeightRequest="1" 
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6">
+                            <Label Text="Ajuda com Facebook" TextColor="#485992">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AjudaFacebook" NumberOfTapsRequired="1"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
