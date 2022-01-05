@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Control.Perfil"
+             Title="Perfil" >
+    <ContentPage.Content>
+
+        <Grid Grid.Row="0" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="loginLogo.png" HeightRequest="70" VerticalOptions="EndAndExpand"/>
+
+            <CollectionView x:Name="CollectionUser" Grid.Row="1">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                    <Label Text="Nome" TextColor="#2196f3"/>
+                                    <Label Text="{Binding Name}" TextColor="Gray"/>
+                                </StackLayout>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                    <Label Text="Telefone" TextColor="#2196f3"/>
+                                    <Label Text="{Binding Telefone}" TextColor="Gray"/>
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                    <Label Text="Email" TextColor="#2196f3"/>
+                                    <Label Text="{Binding Email}" TextColor="Gray"/>
+                                </StackLayout>
+                                <Label x:Name="btEditarEmail" Text="Editar" VerticalOptions="End"
+                                       HorizontalOptions="End" TextColor="Orange">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                            <Grid Grid.Row="3" VerticalOptions="CenterAndExpand" Margin="0,40">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="trocaSenha" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                <Label Text="Alterar Senha" VerticalOptions="Center" Grid.Column="1">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="EndAndExpand">
+                <Label  x:Name="percent" Text="" VerticalOptions="Center" FontSize="Medium"/>
+                <Label x:Name="btnVerificar" Text="Verificar Actualização" VerticalOptions="Center"
+                       TextColor="#FFC000" FontSize="Medium">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
