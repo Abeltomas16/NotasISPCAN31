@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Actividades"
+             x:Class="NotasISPCAN.Views.Control.ActividadesTabbed">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuPerfil" Order="Secondary" Text="Perfil" Priority="0" Clicked="MenuPerfil_Clicked"/>
+        <ToolbarItem Name="MenuSobre" Order="Secondary" Text="Sobre" Priority="1" Clicked="MenuSobre_Clicked"/>
+        <ToolbarItem Name="MenuLogout" Order="Secondary" Text="Sair" Priority="2" Clicked="MenuLogout_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <CollectionView x:Name="ViewNoticias" EmptyView="nenhuma Noticia Disponível"
+                        ItemsSource="{Binding Actividades}"
+                        Margin="10">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="10" CompressedLayout.IsHeadless="True">
+                        <Frame BorderColor="Transparent" HasShadow="True" CornerRadius="4" BackgroundColor="White" Padding="5">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Image Aspect="AspectFit" Source="{Binding IMGURL}" Margin="0"/>
+                                </Grid>
+                                <StackLayout BackgroundColor="#0077F7" Margin="0" Grid.Row="1" Padding="10">
+                                    <Label Text="{Binding Descricao}"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" TextColor="white" Style="{DynamicResource BodyStyle}"/>
+                                    <Label Text="{Binding DataCadastro, StringFormat='{}{0:d}'}" FontSize="Medium" HorizontalOptions="Fill" HorizontalTextAlignment="End" TextColor="#FE9611"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
