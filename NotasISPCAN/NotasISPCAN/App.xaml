@@ -3,5 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotasISPCAN.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LbCursoEDisciplina" TargetType="Label">
+                <Setter Property="TextColor" Value="#2196f3"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="LbCadeiras" TargetType="Label">
+                <Setter Property="TextColor" Value="#2196f3"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="Lblinha" TargetType="Label">
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="BackgroundColor" Value="#565554"/>
+            </Style>
+
+            <Style x:Key="btVisitarWeb" TargetType="Label">
+                <Setter Property="TextColor" Value="#ff6c00"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="FontSize" Value="Caption"/>
+            </Style>
+            <Style x:Key="LbDisciplinasView" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Grid.ColumnSpan" Value="3"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

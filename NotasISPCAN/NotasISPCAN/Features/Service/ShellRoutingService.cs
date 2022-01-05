@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace NotasISPCAN.Features.Service
@@ -20,18 +19,6 @@ namespace NotasISPCAN.Features.Service
         public Task GoBackModal()
         {
             return Shell.Current.Navigation.PopModalAsync();
-        }
-        Task IRouting.GoBack()
-        {
-            throw new NotImplementedException();
-        }
-        Task IRouting.GoBackModal()
-        {
-            throw new NotImplementedException();
-        }
-        Task IRouting.NavigateTo(string route)
-        {
-            throw new NotImplementedException();
         }
     }
 }

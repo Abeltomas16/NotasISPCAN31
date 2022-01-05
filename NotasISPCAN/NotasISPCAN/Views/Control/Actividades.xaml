@@ -39,7 +39,7 @@
                                 BackgroundColor="WhiteSmoke" 
                                 Padding="10"/>
                             <Editor Margin="10,0" Placeholder="URL da imagem" MaxLength="600" AutoSize="TextChanges"
-                                x:Name="labelIMG" HorizontalOptions="FillAndExpand"/>
+                                x:Name="labelIMG" BackgroundColor="WhiteSmoke"  HorizontalOptions="FillAndExpand"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Grid.Row="1" Padding="10,10" >
                             <Material:MaterialButton x:Name="btSalvarEditar" BackgroundColor="#46D57B" Text="Salvar"                                              
