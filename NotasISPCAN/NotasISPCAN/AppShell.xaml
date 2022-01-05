@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.AppShell" 
+             xmlns:control="clr-namespace:NotasISPCAN.Views.Control"
+            Title="ShellLogin">
+    <!-- Styles and Resources -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle"
+                   TargetType="Element">
+                <Setter Property="Shell.BackgroundColor"
+                        Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor"
+                        Value="White" />
+                <Setter Property="Shell.TitleColor"
+                        Value="White" />
+                <Setter Property="Shell.DisabledColor"
+                        Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor"
+                        Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor"
+                        Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="White" />
+            </Style>
+            <Style TargetType="TabBar"
+                   BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Loading/Start Page -->
+    <ShellItem Route="loading">
+        <ShellContent ContentTemplate="{DataTemplate control:LoadingPage}" />
+    </ShellItem>
+
+    <!-- Login and Registration Page -->
+    <ShellContent Route="login"
+                  ContentTemplate="{DataTemplate control:LoginPage}">
+    </ShellContent>
+
+    <!-- Main Page -->
+    <TabBar Route="main">
+        <ShellContent Title="Actividades" Icon="actividades" ContentTemplate="{DataTemplate control:ActividadesTabbed}"/>
+        <ShellContent Title="Notas" Icon="disciplinas.png" ContentTemplate="{DataTemplate control:EstudantesNota}"/>
+    </TabBar>
+
+    <TabBar Route="admin">
+        <ShellContent Title="Actividades" Icon="actividades" ContentTemplate="{DataTemplate control:Actividades}"/>
+        <ShellContent Title="Cadeira" Icon="disciplinas.png" ContentTemplate="{DataTemplate control:Cadeiras}"/>
+        <ShellContent Title="Estudantes" Icon="estudante.png" ContentTemplate="{DataTemplate control:Estudantes}"/>
+        <ShellContent Title="Docentes" Icon="docente.png" ContentTemplate="{DataTemplate control:Docentes}"/>
+    </TabBar>
+
+    <TabBar Route="professor">
+        <ShellContent Title="Actividades" Icon="actividades" ContentTemplate="{DataTemplate control:ActividadesTabbed}"/>
+        <ShellContent Title="Estudantes" Icon="estudante.png" ContentTemplate="{DataTemplate control:DocenteNota}"/>
+    </TabBar>
+
+</Shell>
