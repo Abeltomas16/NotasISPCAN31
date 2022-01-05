@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Control.NotasDetalhes" Title="Notas"
+             BackgroundColor="#f3f3f3">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0"  
+                   Padding="10"
+                   BackgroundColor="White"
+                  HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Dados do Estudante" HorizontalOptions="CenterAndExpand" 
+                               FontSize="Body" Margin="15" TextColor="#2189dc"/>
+                        <Label x:Name="NomeEstudante" Grid.Row="1"/>
+                        <Label Text="Curso: Eng. Infomática" Grid.Row="2"/>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="1" Padding="10"
+                       BackgroundColor="White"
+                       HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Dados da cadeira" HorizontalOptions="CenterAndExpand" 
+                               FontSize="Body" Margin="15" TextColor="#2189dc"/>
+                        <Label x:Name="NomeCadeira" Grid.Row="1"/>
+                        <Label x:Name="NomeProf" Grid.Row="2"/>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="2"  
+                   Padding="10"
+                   BackgroundColor="White"
+                  HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Notas" HorizontalOptions="CenterAndExpand" FontSize="Body" 
+                               Margin="15" TextColor="#2189dc"/>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="Nota 1:"/>
+                            <Entry Keyboard="Numeric" x:Name="txtNota1" Text="{Binding _Nota1}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2">
+                            <Label Text="Nota 2:"/>
+                            <Entry Keyboard="Numeric" x:Name="txtNota2" Text="{Binding _Nota2}"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Button Text="Salvar" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="#46D57B" VerticalOptions="Center"
+                    Grid.Row="3" TextColor="White" Margin="10,20"
+                       Command="{Binding Cadastrar}"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

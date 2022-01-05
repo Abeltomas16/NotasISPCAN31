@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Notas"
+             x:Class="NotasISPCAN.Views.Control.DocenteNota">
+    <ContentPage.Content>
+        <Grid>
+            <Label Margin="20" HeightRequest="90">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Estudantes&#10;" FontSize="Medium" TextColor="#2189df"/>
+                        <Span Text="&#10;" FontSize="Medium" TextColor="#2189df"/>
+                        <Span Text="{Binding Total, StringFormat='Total: {0}'}" FontSize="Medium" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <CollectionView x:Name="ViewEstudante" BackgroundColor="#f3f3f3" 
+                        EmptyView="Nenhum estudante registrado" 
+                        SelectionMode="Single" 
+                        ItemsSource="{Binding Estudantes}"
+                        Margin="10,100,10,10"
+                        SelectionChanged="ViewEstudante_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" Span="1"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10,5"
+                           Padding="10"
+                           BackgroundColor="White"
+                           HasShadow="True">
+                            <Grid Padding="0" ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Start" 
+                                   Grid.Row="0" Margin="0,5" TextColor="#2189dc"  
+                                   Style="{DynamicResource CaptionStyle}" />
+                                <Label Text="{Binding Telefone}" FontSize="Medium" 
+                                       VerticalOptions="End" Grid.Row="1" 
+                                       TextColor="Black"  Style="{DynamicResource CaptionStyle}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

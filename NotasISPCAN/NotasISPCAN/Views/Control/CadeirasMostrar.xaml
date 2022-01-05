@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Control.CadeirasMostrar" 
+             Title="Seleciona as cadeiras">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Cadeiras disponíveis" Margin="10,10" FontSize="Medium" TextColor="#2189df" Style="{DynamicResource BodyStyle}"/>
+            <Label Text="{Binding Total, StringFormat='Total {0}'}" Margin="10,0" FontSize="Small" TextColor="Green"/>
+
+            <CollectionView x:Name="ViewCadeiras" BackgroundColor="#f3f3f3" 
+                              ItemsSource="{Binding Cadeiras}"
+                            EmptyView="Nenhuma cadeira registrada" 
+                            SelectionMode="Multiple" 
+                              SelectedItems="{Binding SelectedCadeira}"
+                           SelectionChanged="ViewCadeiras_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" Span="1"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Padding="10" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}" FontSize="Small" VerticalOptions="Start" Grid.Row="0" Margin="0,10" TextColor="#2189dc"  Style="{DynamicResource CaptionStyle}" />
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="okk" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="#46D57B" VerticalOptions="Center"
+                    TextColor="White" Margin="10,20"
+                    Text="Guardar" Clicked="okk_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
