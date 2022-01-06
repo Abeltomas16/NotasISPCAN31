@@ -63,6 +63,9 @@
     <PackageReference Include="FluentValidation">
       <Version>10.3.6</Version>
     </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.9.5.9</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>

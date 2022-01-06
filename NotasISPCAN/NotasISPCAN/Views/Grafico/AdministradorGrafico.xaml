@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotasISPCAN.Views.Grafico.AdministradorGrafico"
+              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:grafico="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Resumo"
+             BackgroundColor="#f3f3f3">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <pancake:PancakeView HeightRequest="170" WidthRequest="450"
+                                     VerticalOptions="Center" HorizontalOptions="Center" 
+                                     Margin="10" CornerRadius="10" BackgroundColor="#fff"
+                                     Padding="10">
+                    <pancake:PancakeView.Shadow>
+                        <pancake:DropShadow Color="Black" Offset="10,10"/>
+                    </pancake:PancakeView.Shadow>
+
+                    <Grid RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Margin="0,10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Resultado 1ª" TextColor="Black"/>
+                                    <Span Text=" Vs " TextColor="#D53343" FontAttributes="Bold"/>
+                                    <Span Text="2ª" TextColor="Black"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <grafico:ChartView x:Name="parcelar1"  WidthRequest="90" HeightRequest="90" Grid.Row="1" Grid.Column="0"/>
+                        <grafico:ChartView x:Name="parcelar2"  WidthRequest="90" HeightRequest="90" Grid.Row="1" Grid.Column="1"/>
+
+                    </Grid>
+                </pancake:PancakeView>
+
+                <pancake:PancakeView HeightRequest="170" WidthRequest="450" Grid.Row="1"
+                                     VerticalOptions="Center" HorizontalOptions="Center" 
+                                     Margin="10" CornerRadius="10" BackgroundColor="#fff"
+                                     Padding="10">
+                    <pancake:PancakeView.Shadow>
+                        <pancake:DropShadow Color="Black" Offset="10,10"/>
+                    </pancake:PancakeView.Shadow>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Margin="0,10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Média 1ª" TextColor="Black"/>
+                                    <Span Text=" Vs " TextColor="#D53343" FontAttributes="Bold"/>
+                                    <Span Text="2ª" TextColor="Black"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <grafico:ChartView x:Name="desempenho" HeightRequest="150" Grid.Row="1"/>
+
+                    </Grid>
+                </pancake:PancakeView>
+
+                <pancake:PancakeView HeightRequest="70" WidthRequest="450" Grid.Row="2"
+                                     VerticalOptions="Center" HorizontalOptions="Center" 
+                                     Margin="10" CornerRadius="10" BackgroundColor="#fff"
+                                     Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Estudante de mérito" Grid.Row="0" Grid.Column="0" TextColor="Black" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="0,10"/>
+
+                        <Label x:Name="melhorAluno" Text=" " VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0"/>
+
+                        <pancake:PancakeView x:Name="progressView"
+                                     Padding="0" Grid.Row="1" Grid.Column="1"
+                                     HorizontalOptions="FillAndExpand"
+                                     WidthRequest="50"
+                                      HeightRequest="10"
+                                     CornerRadius="20"
+                                     BackgroundColor="#bc91d7"
+                                      BackgroundGradientStartPoint="0,0"
+                                      BackgroundGradientEndPoint="1,0"
+                                      VerticalOptions="Center">
+                            <pancake:PancakeView.BackgroundGradientStops>
+                                <pancake:GradientStopCollection>
+                                    <pancake:GradientStop Color="#F58A1F" Offset="0"/>
+                                    <pancake:GradientStop Color="#F58A1F" Offset="0.8"/>
+                                    <pancake:GradientStop Color="#f3f3f3" Offset="0.9"/>
+                                    <pancake:GradientStop Color="#f3f3f3" Offset="1"/>
+                                </pancake:GradientStopCollection>
+                            </pancake:PancakeView.BackgroundGradientStops>
+                        </pancake:PancakeView>
+
+                    </Grid>
+                </pancake:PancakeView>
+
+                <pancake:PancakeView HeightRequest="150" WidthRequest="450" Grid.Row="3"
+                                     VerticalOptions="Center" HorizontalOptions="Center" 
+                                     Margin="10" CornerRadius="10" BackgroundColor="#fff"
+                                     Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Semestre" HorizontalOptions="Start" VerticalOptions="Center"
+                             Margin="0,10" TextColor="#0E2B3A"/>
+                        <grafico:ChartView Grid.Row="1" x:Name="semestre" HeightRequest="150"/>
+                    </Grid>
+                </pancake:PancakeView>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
