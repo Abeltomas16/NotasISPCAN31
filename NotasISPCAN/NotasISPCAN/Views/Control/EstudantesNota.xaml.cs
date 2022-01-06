@@ -1,10 +1,10 @@
-﻿using NotasISPCAN.ViewModel;
+﻿using Microcharts;
+using NotasISPCAN.Models;
+using NotasISPCAN.ViewModel;
+using SkiaSharp;
 using Splat;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +18,7 @@ namespace NotasISPCAN.Views.Control
         EstudantesViewModel _ViewModel { get; } = Locator.Current.GetService<EstudantesViewModel>();
         string[] cores = new string[]
        {
-             "#FF1943",
+            "#FF1943",
             "#00BFFF",
             "#00CED9",
             "#00CED1",
@@ -35,9 +35,9 @@ namespace NotasISPCAN.Views.Control
                 lblNomeAluno.Text = Application.Current.Properties["NomeUsuario"].ToString();
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    /*var load = await MaterialDialog.Instance.LoadingDialogAsync(message: "Caregando");
+                    var load = await MaterialDialog.Instance.LoadingDialogAsync(message: "Caregando");
                     List<NotasCadeirasDocente> notas = await _ViewModel.listar(key);
-                    load.Dismiss();
+                    await load.DismissAsync();
                     notass.ItemsSource = notas;
                     List<ChartEntry> entradas1 = new List<ChartEntry>();
                     List<ChartEntry> entradas2 = new List<ChartEntry>();
@@ -73,7 +73,7 @@ namespace NotasISPCAN.Views.Control
                         });
                         indice++;
                     }
-                    Grafico2.Chart = new DonutChart() { Entries = entradas2, BackgroundColor = SKColors.Transparent, LabelTextSize = 25 };*/
+                    Grafico2.Chart = new DonutChart() { Entries = entradas2, BackgroundColor = SKColors.Transparent, LabelTextSize = 25 };
 
                 });
             }
