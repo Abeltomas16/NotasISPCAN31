@@ -29,7 +29,7 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <Image Source="loginLogo.png" HeightRequest="70" VerticalOptions="EndAndExpand"/>
+                    <Image Source="back.png" Aspect="AspectFit" VerticalOptions="EndAndExpand"/>
                     <Material:MaterialTextField 
                                 x:Name="txtUser"
                                 Text="{Binding _email}"
