@@ -48,7 +48,7 @@ namespace NotasISPCAN.Views.Control
             try
             {
                 var load = await MaterialDialog.Instance.LoadingDialogAsync("Verificando");
-                int versaoActual = 1;
+                int versaoActual = 2;
                 string content = await new HttpClient().GetStringAsync(fileversion);
                 await load.DismissAsync();
                 if (int.TryParse(content, out versaonova))

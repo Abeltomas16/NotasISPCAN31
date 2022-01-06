@@ -47,7 +47,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Material:MaterialCard>
-            <Label Text="Versão: 1 Autor: Abel Tomás" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="End"/>
+            <Label Text="Versão: 1.2 Autor: Abel Tomás" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
