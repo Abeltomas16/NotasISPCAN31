@@ -2,8 +2,9 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotasISPCAN.AppShell" 
+             xmlns:resumo="clr-namespace:NotasISPCAN.Views.Grafico"
              xmlns:control="clr-namespace:NotasISPCAN.Views.Control"
-            Title="ShellLogin">
+             Title="ShellLogin">
     <!-- Styles and Resources -->
     <Shell.Resources>
         <ResourceDictionary>
@@ -51,6 +52,7 @@
     </TabBar>
 
     <TabBar Route="admin">
+        <ShellContent Title="Resumo" Icon="graphico1.png" ContentTemplate="{DataTemplate resumo:AdministradorGrafico}"/>
         <ShellContent Title="Actividades" Icon="actividades" ContentTemplate="{DataTemplate control:Actividades}"/>
         <ShellContent Title="Cadeira" Icon="disciplinas.png" ContentTemplate="{DataTemplate control:Cadeiras}"/>
         <ShellContent Title="Estudantes" Icon="estudante.png" ContentTemplate="{DataTemplate control:Estudantes}"/>
@@ -60,6 +62,7 @@
     <TabBar Route="professor">
         <ShellContent Title="Actividades" Icon="actividades" ContentTemplate="{DataTemplate control:ActividadesTabbed}"/>
         <ShellContent Title="Estudantes" Icon="estudante.png" ContentTemplate="{DataTemplate control:DocenteNota}"/>
+        <ShellContent Title="Resumo" Icon="graphico1.png" ContentTemplate="{DataTemplate resumo:ProfessorGrafico}"/>
     </TabBar>
 
 </Shell>
