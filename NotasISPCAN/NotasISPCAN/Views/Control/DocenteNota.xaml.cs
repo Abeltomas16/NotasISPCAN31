@@ -64,16 +64,12 @@ namespace NotasISPCAN.Views.Control
             try
             {
                 var load = await MaterialDialog.Instance.LoadingDialogAsync(message: "gerando pdf");
-
                 string keyCadeira = Application.Current.Properties["IDCadeira"].ToString();
                 var notas = await DocentesViewModel.mostrarNotasRelatorio(keyCadeira);
                 DataTable dados = converterFromDatatable(notas);
-
                 var strategy = Locator.Current.GetService<PdfGenerateContext<PdfProfessorStrategy>>();
                 await strategy.CriarPdf(dados);
-
                 await load.DismissAsync();
-
             }
             catch (Exception)
             {

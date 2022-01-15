@@ -47,7 +47,8 @@ namespace NotasISPCAN.Relatorio.Strategy
                 Brush = PdfBrushes.Black
             };
             element4.Draw(pagina, new PointF(0, 70));
-            PdfTextElement element5 = new PdfTextElement("DISCIPLINA: programação web", subHeadingFont)
+            string cadeira = Application.Current.Properties["Nomecadeira"].ToString();
+            PdfTextElement element5 = new PdfTextElement($"DISCIPLINA: {cadeira}", subHeadingFont)
             {
                 Brush = PdfBrushes.Black
             };
@@ -85,7 +86,7 @@ namespace NotasISPCAN.Relatorio.Strategy
             MemoryStream stream = new MemoryStream();
             documento.Save(stream);
             documento.Close(true);
-            string name = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString()+".pdf";
+            string name = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString() + ".pdf";
             await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView(name, "application/pdf", stream);
             MessagingCenter.Send<object>(name, "pdfgerado");
         }
