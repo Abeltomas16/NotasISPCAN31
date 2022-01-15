@@ -2,6 +2,8 @@
 using Firebase.Database;
 using NotasISPCAN.Commom.Validation;
 using NotasISPCAN.Features.Service;
+using NotasISPCAN.Relatorio;
+using NotasISPCAN.Relatorio.Strategy;
 using NotasISPCAN.ViewModel;
 using Splat;
 using Xamarin.Forms;
@@ -10,13 +12,13 @@ namespace NotasISPCAN
 {
     public partial class App : Application
     {
-
         public App()
         {
-            Dependences();
+             Dependences();
             InitializeComponent();
-            XF.Material.Forms.Material.Init(this);
-            MainPage = new AppShell();
+            //XF.Material.Forms.Material.Init(this);
+            //MainPage = new AppShell();
+            MainPage = new RelDocentesPauta();
         }
         private void Dependences()
         {
@@ -31,6 +33,7 @@ namespace NotasISPCAN
             Locator.CurrentMutable.RegisterLazySingleton<INotas>(() => new NotasService());
             Locator.CurrentMutable.RegisterLazySingleton<IEstudante>(() => new EstudanteService());
 
+            Locator.CurrentMutable.Register(() => new PdfGenerateContext<PdfProfessorStrategy>());
             Locator.CurrentMutable.Register(() => new CadeiraValidator());
             Locator.CurrentMutable.Register(() => new CadeiraViewModel("Cadeiras"), "Cadeira");
             Locator.CurrentMutable.Register(() => new CadeiraViewModel("CadeirasMostrar"), "CadeirasMostrar");
