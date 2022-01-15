@@ -124,6 +124,45 @@ namespace NotasISPCAN.Features.Service
                         }).Where(x => x.KeyCadeira == keycadeira);
             return notas.ToList();
         }
+        public async Task<List<NotasCadeiras>> listarPorCadeiraRelatorio(string keycadeira)
+        {
+            List<NotasCadeiras> notasCadeiras = new List<NotasCadeiras>();
+            var estudantes = (await dbLogin.ListarTodos()).Where(y => y.Categoria == "Estudante");
+
+            var notas = (await dbCliente.Child("notas")
+                        .OnceAsync<NotasDTO>()
+                        ).Select(n => new NotasDTO
+                        {
+                            KeyCadeira = n.Object.KeyCadeira,
+                            KeyAluno = n.Object.KeyAluno,
+                            Nota1 = n.Object.Nota1 ?? "0",
+                            Nota2 = n.Object.Nota2 ?? "0"
+                        }).Where(x => x.KeyCadeira == keycadeira);
+
+            var uniao = from n in notas
+                        join a in estudantes
+                        on n.KeyAluno equals a.Key
+                        select new
+                        {
+                            a.Name,
+                            n.Nota1,
+                            n.Nota2
+                        };
+            foreach (var item in uniao)
+            {
+                double n1 = double.Parse(item.Nota1);
+                double n2 = double.Parse(item.Nota2);
+                double media = (n1 + n2) / 2;
+                notasCadeiras.Add(new NotasCadeiras
+                {
+                    NomeAluno = item.Name,
+                    Nota1 = item.Nota1,
+                    Nota2 = item.Nota2,
+                    Media = media
+                });
+            }
+            return notasCadeiras;
+        }
         public async Task<List<NotasDTO>> listarPorCadeira()
         {
             var notas = (await dbCliente.Child("notas")

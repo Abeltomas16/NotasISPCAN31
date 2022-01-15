@@ -111,6 +111,11 @@ namespace NotasISPCAN.ViewModel
             var resultado = await clienteDocente.MostrarNotas(keycadeira);
             return resultado;
         }
+        public async Task<List<NotasCadeiras>> mostrarNotasRelatorio(string keycadeira)
+        {
+            var resultado = await clienteDocente.MostrarNotasRelatorio(keycadeira);
+            return resultado;
+        }
         public async Task<List<NotasDTO>> mostrarNotas()
         {
             var resultado = await clienteDocente.MostrarNotas();

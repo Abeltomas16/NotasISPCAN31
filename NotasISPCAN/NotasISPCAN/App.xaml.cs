@@ -46,8 +46,6 @@ namespace NotasISPCAN
             Locator.CurrentMutable.Register(() => new ActividadesValidator());
             Locator.CurrentMutable.Register(() => new Usuariovalidator());
             Locator.CurrentMutable.Register(() => new NotasValidar());
-            Locator.CurrentMutable.Register(() => new FirebaseAuthProvider(new FirebaseConfig("PROJECT KEY")));
-            Locator.CurrentMutable.Register(() => new FirebaseClient("LINK PROJECTO"));
         }
         protected override void OnStart()
         {

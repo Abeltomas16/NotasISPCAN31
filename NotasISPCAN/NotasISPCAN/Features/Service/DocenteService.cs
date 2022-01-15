@@ -47,10 +47,14 @@ namespace NotasISPCAN.Features.Service
             var dados = await dbLogin.Pesquisar(token);
             return dados;
         }
-
         public async Task<List<NotasDTO>> MostrarNotas(string keyCadeira)
         {
             var dados = await dbNotas.listarPorCadeira(keyCadeira);
+            return dados;
+        }
+        public async Task<List<NotasCadeiras>> MostrarNotasRelatorio(string keyCadeira)
+        {
+            var dados = await dbNotas.listarPorCadeiraRelatorio(keyCadeira);
             return dados;
         }
         public async Task<List<NotasDTO>> MostrarNotas()

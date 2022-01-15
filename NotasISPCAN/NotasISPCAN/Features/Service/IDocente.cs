@@ -11,6 +11,7 @@ namespace NotasISPCAN.Features.Service
         Task<string> Apagar(UsuarioDTO usuarioDTO);
         Task<List<UsuarioDTO>> ListarTodos();
         Task<List<NotasDTO>> MostrarNotas(string keyCadeira);
+        Task<List<NotasCadeiras>> MostrarNotasRelatorio(string keyCadeira);
         Task<List<NotasDTO>> MostrarNotas();
         Task<UsuarioDTO> Pesquisar(string token);
     }
