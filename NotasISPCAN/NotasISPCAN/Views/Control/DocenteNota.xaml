@@ -5,15 +5,23 @@
              x:Class="NotasISPCAN.Views.Control.DocenteNota">
     <ContentPage.Content>
         <Grid>
-            <Label Margin="20" HeightRequest="90">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Estudantes&#10;" FontSize="Medium" TextColor="#2189df"/>
-                        <Span Text="&#10;" FontSize="Medium" TextColor="#2189df"/>
-                        <Span Text="{Binding Total, StringFormat='Total: {0}'}" FontSize="Medium" TextColor="Red"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+            <StackLayout Margin="20" Orientation="Horizontal">
+                <Label HeightRequest="90" HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Estudantes&#10;" FontSize="Medium" TextColor="#2189df"/>
+                            <Span Text="&#10;" FontSize="Medium" TextColor="#2189df"/>
+                            <Span Text="{Binding Total, StringFormat='Total: {0}'}" FontSize="Medium" TextColor="Red"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Gerar pauta" HorizontalOptions="EndAndExpand" FontSize="Medium" TextColor="Red">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
             <CollectionView x:Name="ViewEstudante" BackgroundColor="#f3f3f3" 
                         EmptyView="Nenhum estudante registrado" 
                         SelectionMode="Single" 

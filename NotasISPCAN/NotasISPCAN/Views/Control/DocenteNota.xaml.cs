@@ -53,5 +53,10 @@ namespace NotasISPCAN.Views.Control
                     });
             }
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

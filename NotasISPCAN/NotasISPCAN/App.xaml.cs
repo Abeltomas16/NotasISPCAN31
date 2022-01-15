@@ -14,11 +14,10 @@ namespace NotasISPCAN
     {
         public App()
         {
-             Dependences();
+            Dependences();
             InitializeComponent();
-            //XF.Material.Forms.Material.Init(this);
-            //MainPage = new AppShell();
-            MainPage = new RelDocentesPauta();
+            XF.Material.Forms.Material.Init(this);
+            MainPage = new AppShell();
         }
         private void Dependences()
         {
