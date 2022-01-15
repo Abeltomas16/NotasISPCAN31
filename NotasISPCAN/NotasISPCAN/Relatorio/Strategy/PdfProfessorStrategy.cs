@@ -81,9 +81,17 @@ namespace NotasISPCAN.Relatorio.Strategy
             {
                 Layout = PdfLayoutType.Paginate
             };
-            tabela.Draw(pagina, new RectangleF(new PointF(0, 140), new SizeF(graphics.ClientSize.Width, graphics.ClientSize.Height - 100)), layoutFormat);
+            var deu = tabela.Draw(pagina, new RectangleF(new PointF(0, 140), new SizeF(graphics.ClientSize.Width, graphics.ClientSize.Height - 100)), layoutFormat);
+            PdfTextElement element1 = new PdfTextElement("O Docente", subHeadingFont);
+            var elementPoint = element1.Draw(pagina, new PointF((pagina.Size.Width / 2) - 50, deu.Bounds.Bottom + 50));
+            PdfLine pdfLine = new PdfLine(PdfPens.Black, new PointF(0, 50), new PointF(200, 50));
+            var linha = pdfLine.Draw(pagina, new PointF(elementPoint.Bounds.Location.X - 70, deu.Bounds.Bottom + 50));
+            string nomeusuario = Application.Current.Properties["NomeUsuario"].ToString();
+            PdfTextElement pdfTextElementNome = new PdfTextElement("Abel Tomás", subHeadingFont);
+            pdfTextElementNome.Draw(pagina, new PointF(elementPoint.Bounds.Location.X, deu.Bounds.Bottom + 110));
 
             MemoryStream stream = new MemoryStream();
+
             documento.Save(stream);
             documento.Close(true);
             string name = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString() + ".pdf";
