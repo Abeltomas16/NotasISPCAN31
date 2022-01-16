@@ -61,9 +61,10 @@ namespace NotasISPCAN.Views.Control
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            IMaterialModalPage load=null;
             try
             {
-                var load = await MaterialDialog.Instance.LoadingDialogAsync(message: "gerando pdf");
+                load = await MaterialDialog.Instance.LoadingDialogAsync(message: "gerando pdf");
                 string keyCadeira = Application.Current.Properties["IDCadeira"].ToString();
                 var notas = await DocentesViewModel.mostrarNotasRelatorio(keyCadeira);
                 DataTable dados = converterFromDatatable(notas);
@@ -73,6 +74,7 @@ namespace NotasISPCAN.Views.Control
             }
             catch (Exception)
             {
+                if (load != null) await load.DismissAsync();
                 await MaterialDialog.Instance.SnackbarAsync(message: "Erro, contacte o administrador", actionButtonText: "Ok", msDuration: MaterialSnackbar.DurationLong,
                     new XF.Material.Forms.UI.Dialogs.Configurations.MaterialSnackbarConfiguration
                     {
@@ -87,9 +89,9 @@ namespace NotasISPCAN.Views.Control
             DataTable dados = new DataTable();
             dados.Columns.Add("  Nº", typeof(string));
             dados.Columns.Add("  Nome", typeof(string));
-            dados.Columns.Add("  Nota 1º", typeof(string));
+            dados.Columns.Add("  Nota 1", typeof(string));
             dados.Columns.Add("  Nota 2", typeof(string));
-            dados.Columns.Add("  Média", typeof(double));
+            dados.Columns.Add("  Média", typeof(string));
             int index = 1;
             foreach (var item in notas)
             {

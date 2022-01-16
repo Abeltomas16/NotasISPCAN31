@@ -14,12 +14,20 @@ namespace NotasISPCAN.Relatorio.Strategy
 {
     public class PdfProfessorStrategy : Igenerate
     {
+        static PdfFont gridFont = new PdfStandardFont(PdfFontFamily.Helvetica, 10);
         public async Task CriarPdf(DataTable fonteDados)
         {
             PdfDocument documento = new PdfDocument();
             PdfPage pagina = documento.Pages.Add();
             PdfGraphics graphics = pagina.Graphics;
             PdfGrid tabela = new PdfGrid();
+            tabela.Style.Font = gridFont;
+            PdfGridStyle tabelaStyle = new PdfGridStyle
+            {
+                CellPadding = new PdfPaddings(5, 5, 5, 5)
+            };
+            tabela.BeginCellLayout += Tabela_BeginCellLayout;
+            tabela.Style = tabelaStyle;
             Stream imageStream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream("NotasISPCAN.Relatorio.Img.ispcan.jpg");
 
             RectangleF bounds = new RectangleF(0, 0, 90, 70);
@@ -65,18 +73,20 @@ namespace NotasISPCAN.Relatorio.Strategy
             PdfGridCellStyle cellStyle = new PdfGridCellStyle();
             cellStyle.Borders.All = PdfPens.White;
             PdfGridRow header = tabela.Headers[0];
-
             PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 12f);
             tabela.Style.Font = font;
+            header.Height = CalculateHeightInRotation(header, font);
             for (int i = 0; i < header.Cells.Count; i++)
             {
-                header.Cells[i].StringFormat = new PdfStringFormat(PdfTextAlignment.Center, PdfVerticalAlignment.Middle);
-                if (i > 1)
+                header.Cells[i].StringFormat.Alignment = PdfTextAlignment.Center;
+                header.Cells[i].StringFormat.LineAlignment = PdfVerticalAlignment.Middle;
+
+                if (i != 1)
                 {
-                    header.Height = CalculateHeightInRotation(header, font);
+                    float columnWidth = MeasureWidth(invoiceDetails, i);
+                    tabela.Columns[i].Width = columnWidth + 20;
                 }
             }
-            tabela.BeginCellLayout += Tabela_BeginCellLayout;
             PdfGridLayoutFormat layoutFormat = new PdfGridLayoutFormat
             {
                 Layout = PdfLayoutType.Paginate
@@ -97,7 +107,22 @@ namespace NotasISPCAN.Relatorio.Strategy
             await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView(name, "application/pdf", stream);
             MessagingCenter.Send<object>(name, "pdfgerado");
         }
+        public static float MeasureWidth(DataTable dataTable, int columnCounnt)
+        {
+            float maxWidth = 0;
 
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                string text = dataTable.Rows[i][columnCounnt] as string;
+
+                float width = gridFont.MeasureString(text).Width;
+
+                if (maxWidth < width)
+                    maxWidth = width;
+
+            }
+            return maxWidth + 2;
+        }
         private float CalculateHeightInRotation(PdfGridRow row, PdfFont font)
         {
             float height = 20;

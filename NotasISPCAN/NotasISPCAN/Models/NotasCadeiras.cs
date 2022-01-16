@@ -5,6 +5,6 @@
         public string NomeAluno { get; set; }
         public string Nota1 { get; set; }
         public string Nota2 { get; set; }
-        public double Media { get; set; }
+        public string Media { get; set; }
     }
 }

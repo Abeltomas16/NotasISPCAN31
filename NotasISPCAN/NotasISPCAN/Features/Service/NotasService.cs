@@ -152,7 +152,7 @@ namespace NotasISPCAN.Features.Service
             {
                 double n1 = double.Parse(item.Nota1);
                 double n2 = double.Parse(item.Nota2);
-                double media = (n1 + n2) / 2;
+                string media = ((n1 + n2) / 2).ToString();
                 notasCadeiras.Add(new NotasCadeiras
                 {
                     NomeAluno = item.Name,
